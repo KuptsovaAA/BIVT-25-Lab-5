@@ -323,24 +323,23 @@ namespace Lab5
         {
 
             // code here
-            int[] sum = new int[array.Length];
             for (int i = 0; i < array.Length; i++)
             {
-                int s = 0;
-                for (int j = 0; j < array[i].Length; j++)
+                for (int j = 0; j < array.Length - 1; j++)
                 {
-                    s += array[i][j];
-                }
-                sum[i] = s;
-            }
-            for (int i = 0; i < array.Length - 1; i++)
-            {
-                for (int j = 0; j < array.Length - i - 1; j++)
-                {
-                    if (sum[j] > sum[j + 1])
+                    int sum1 = 0;
+                    int sum2 = 0;
+                    for (int k = 0; k < array[j].Length; k++)
                     {
-                        (array[j], array[j + 1]) = (array[j + 1], array[j]);
-                        (sum[j], sum[j + 1]) = (sum[j + 1], sum[j]);
+                        sum1 += array[j][k];
+                    }
+                    for (int k = 0; k < array[j + 1].Length; k++)
+                    {
+                        sum2 += array[j + 1][k];
+                    }
+                    if (sum1 > sum2)
+                    {
+                        (array[j],array[j + 1]) = (array[j + 1], array[j]);
                     }
                 }
             }
